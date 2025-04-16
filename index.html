@@ -1,127 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Medibite | Smarter Medical Learning</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medibite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .slide-panel {
+      transition: transform 0.3s ease-in-out;
+    }
+    .slide-panel.hidden {
+      transform: translateX(100%);
+    }
+    .slide-panel.visible {
+      transform: translateX(0);
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-800 font-sans relative">
+<body class="bg-gray-100">
 
-  <!-- Navbar -->
-  <div class="flex justify-between items-center bg-blue-800 p-4 shadow relative z-10">
-    <!-- Logo Section -->
-    <div class="flex items-center space-x-4">
-      <img src="https://img.icons8.com/fluency/48/stethoscope.png" alt="stethoscope" class="h-10 w-10">
-      <div class="text-3xl font-bold text-white">Medibite</div>
-    </div>
-
-    <!-- 3 dots menu icon -->
+  <!-- Header -->
+  <header class="bg-blue-700 text-white p-4 flex items-center justify-between">
     <div>
-      <button id="menuToggle" class="text-2xl text-white focus:outline-none">•••</button>
+      <h1 class="text-3xl font-bold">Medibite</h1>
+      <p class="text-sm text-white opacity-80 -mt-1">
+        Academic and Admission care for Medical Aspirants
+      </p>
     </div>
+    <button id="menu-btn" class="text-white focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+           viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 6h.01M12 12h.01M12 18h.01"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Slide Menu Panel -->
+  <div id="menu-panel" class="fixed top-0 right-0 h-full w-1/3 bg-blue-700 text-white p-4 slide-panel hidden z-50">
+    <ul class="space-y-4 mt-10">
+      <li><a href="#" class="block hover:text-gray-300">Home</a></li>
+      <li><a href="#" class="block hover:text-gray-300">Blogs</a></li>
+      <li><a href="#" class="block hover:text-gray-300">Our Social Media</a></li>
+      <li><a href="#" class="block hover:text-gray-300">Contact</a></li>
+      <li class="mt-10"><a href="#" class="block hover:text-gray-300">Login / Sign Up</a></li>
+    </ul>
   </div>
 
-  <!-- Overlay -->
+  <!-- Overlay to close panel -->
   <div id="overlay" class="fixed inset-0 bg-black bg-opacity-40 hidden z-40"></div>
 
-  <!-- Sliding Panel -->
-  <div id="menuPanel" class="fixed top-0 right-0 h-full w-1/3 max-w-xs bg-blue-800 text-white transform translate-x-full transition-transform duration-300 z-50 p-6 flex flex-col justify-between">
-    <div class="space-y-4">
-      <a href="#" class="block hover:text-blue-200">Home</a>
-      <a href="#" class="block hover:text-blue-200">Blog</a>
-      <a href="#" class="block hover:text-blue-200">Our Social Media</a>
-      <a href="#" class="block hover:text-blue-200">Contact</a>
-    </div>
-    <div class="pt-6 border-t mt-6">
-      <a href="#" class="block hover:text-blue-200">Login / Sign Up</a>
-    </div>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="bg-blue-50 py-16 px-4 text-center">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4">Your Gateway to Smarter Medical Learning</h1>
-    <p class="text-lg text-gray-700 mb-6">মেডিকেল নোটস, কুইজ আর দরকারি রিসোর্স — all in one place!</p>
-    <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition">Explore Notes</a>
-  </section>
-
-  <!-- Features Section (button-like) -->
-  <section class="py-16 px-4 max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-8 text-center">
-
-      <!-- Feature 1 -->
-      <a href="#" class="block bg-blue-600 text-white hover:bg-blue-700 transition p-6 rounded-xl shadow-md ring-2 ring-blue-800 hover:ring-blue-900 font-semibold text-lg transform transition-all hover:scale-105">
-        <div class="text-4xl mb-2">📘</div>
-        Organized Notes
-      </a>
-
-      <!-- Feature 2 -->
-      <a href="#" class="block bg-blue-600 text-white hover:bg-blue-700 transition p-6 rounded-xl shadow-md ring-2 ring-blue-800 hover:ring-blue-900 font-semibold text-lg transform transition-all hover:scale-105">
-        <div class="text-4xl mb-2">📝</div>
-        Practice Quizzes
-      </a>
-
-      <!-- Feature 3 -->
-      <a href="#" class="block bg-blue-600 text-white hover:bg-blue-700 transition p-6 rounded-xl shadow-md ring-2 ring-blue-800 hover:ring-blue-900 font-semibold text-lg transform transition-all hover:scale-105">
-        <div class="text-4xl mb-2">🤝</div>
-        Interactive Community
-      </a>
-
+  <!-- Features Section -->
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <button class="bg-white p-4 rounded shadow hover:shadow-md transition">Smart Notes</button>
+      <button class="bg-white p-4 rounded shadow hover:shadow-md transition">Subject-wise Materials</button>
+      <button class="bg-white p-4 rounded shadow hover:shadow-md transition">Mini Quizzes</button>
     </div>
   </section>
 
   <!-- Recent Uploads Section -->
-  <section class="bg-gray-50 py-16 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-2xl font-bold mb-6">Recent Uploads</h2>
-      <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- Recent Upload 1 -->
-        <div class="bg-white p-4 shadow rounded transform transition-all hover:scale-105 focus:ring-2 focus:ring-blue-600 focus:outline-none">
-          <a href="/notes/physiology-action-potential" class="block">
-            <div class="font-semibold text-lg mb-2">Physiology - Nerve Action Potential</div>
-            <p class="text-sm text-gray-600">Uploaded 2 days ago</p>
-          </a>
-        </div>
-
-        <!-- Recent Upload 2 -->
-        <div class="bg-white p-4 shadow rounded transform transition-all hover:scale-105 focus:ring-2 focus:ring-blue-600 focus:outline-none">
-          <a href="/notes/anatomy-upper-limb" class="block">
-            <div class="font-semibold text-lg mb-2">Anatomy - Upper Limb Overview</div>
-            <p class="text-sm text-gray-600">Uploaded 3 days ago</p>
-          </a>
-        </div>
-
-        <!-- Recent Upload 3 -->
-        <div class="bg-white p-4 shadow rounded transform transition-all hover:scale-105 focus:ring-2 focus:ring-blue-600 focus:outline-none">
-          <a href="/notes/pharmacology-autonomic-drugs" class="block">
-            <div class="font-semibold text-lg mb-2">Pharmacology - Autonomic Drugs</div>
-            <p class="text-sm text-gray-600">Uploaded 5 days ago</p>
-          </a>
-        </div>
-
-      </div>
+  <section class="p-6">
+    <h2 class="text-2xl font-bold mb-4">Recent Uploads</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="#" class="block bg-white p-4 rounded shadow hover:shadow-md transition">
+        <h3 class="text-lg font-semibold">Recent Note 1</h3>
+        <p class="text-gray-600">Description or brief detail...</p>
+      </a>
+      <a href="#" class="block bg-white p-4 rounded shadow hover:shadow-md transition">
+        <h3 class="text-lg font-semibold">Recent Note 2</h3>
+        <p class="text-gray-600">Description or brief detail...</p>
+      </a>
+      <a href="#" class="block bg-white p-4 rounded shadow hover:shadow-md transition">
+        <h3 class="text-lg font-semibold">Recent Note 3</h3>
+        <p class="text-gray-600">Description or brief detail...</p>
+      </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-800 text-white py-6 text-center">
-    <p>&copy; 2025 Medibite. All rights reserved.</p>
+  <footer class="bg-blue-700 text-white p-4 text-center">
+    &copy; 2025 Medibite. All rights reserved.
   </footer>
 
-  <!-- Script for toggle panel -->
   <script>
-    const toggle = document.getElementById('menuToggle');
-    const panel = document.getElementById('menuPanel');
+    const menuBtn = document.getElementById('menu-btn');
+    const menuPanel = document.getElementById('menu-panel');
     const overlay = document.getElementById('overlay');
 
-    toggle.addEventListener('click', () => {
-      panel.classList.toggle('translate-x-full');
-      overlay.classList.toggle('hidden');
+    menuBtn.addEventListener('click', () => {
+      menuPanel.classList.remove('hidden');
+      menuPanel.classList.add('visible');
+      overlay.classList.remove('hidden');
     });
 
     overlay.addEventListener('click', () => {
-      panel.classList.add('translate-x-full');
+      menuPanel.classList.remove('visible');
+      menuPanel.classList.add('hidden');
       overlay.classList.add('hidden');
     });
   </script>
